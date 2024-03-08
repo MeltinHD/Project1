@@ -10,10 +10,10 @@ COPY . /app
 # Install MySQL connector
 RUN pip install mysql-connector-python
 RUN pip install bcrypt
+RUN pip install -r requirements.txt
 
 #Expose the application port
-EXPOSE 8000
+EXPOSE 8080
 
 # Run the python Server, which will return 
-#Toronto current time as JSON for GET requests
-CMD [ "python", "server.py" ]
+CMD [ "python", "-u", "server.py" ]

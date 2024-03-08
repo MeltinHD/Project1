@@ -41,9 +41,6 @@ class NoteApiHandler(BaseHTTPRequestHandler):
             gender, bloodtype, dateofbirth = "", "", ""
             address, city, province, postalcode = "", "", "", ""
 
-            # username = data.get('username', [''])[0]
-            # password = data.get('password', [''])[0]
-
             username = data["username"]
             password = data["password"]
             firstname = data["firstname"]
@@ -59,13 +56,6 @@ class NoteApiHandler(BaseHTTPRequestHandler):
             password_bytes = password.encode('utf-8')
             salt = bcrypt.gensalt()
             hashed = bcrypt.hashpw(password_bytes, salt)
-
-            # print("username: ", username)
-            # print("password: ", password)
-            # print("password: ", password_bytes)
-            # print("dateofbirth: ", dateofbirth)
-            # print("Salt :", salt)
-            # print("Hashed: ", hashed)
 
             db = Database()
             db.create_user(username, hashed, firstname, lastname, gender, bloodtype, dateofbirth, address, city, province, postalcode)
@@ -83,10 +73,6 @@ class NoteApiHandler(BaseHTTPRequestHandler):
             username, password, firstname, lastname = "", "", "", ""
             gender, bloodtype, dateofbirth = "", "", ""
             address, city, province, postalcode = "", "", "", ""
-            
-            #print("post_data: ", put_data)
-            #data = parse_qs(put_data)
-            #print("data: ", data)
 
             username = data["username"]
             password = data["password"]
@@ -103,13 +89,6 @@ class NoteApiHandler(BaseHTTPRequestHandler):
             password_bytes = password.encode('utf-8')
             salt = bcrypt.gensalt()
             hashed = bcrypt.hashpw(password_bytes, salt)
-
-            # print("username: ", username)
-            # print("password: ", password)
-            # print("password: ", password_bytes)
-            # print("dateofbirth: ", dateofbirth)
-            # print("Salt :", salt)
-            # print("Hashed: ", hashed)
 
             db = Database()
             db.update_user(username, hashed, firstname, lastname, gender, bloodtype, dateofbirth, address, city, province, postalcode)
