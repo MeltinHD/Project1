@@ -37,10 +37,6 @@ class NoteApiHandler(BaseHTTPRequestHandler):
             post_data = self.rfile.read(content_length).decode('utf-8')
             data = json.loads(post_data)
 
-            #data = parse_qs(post_data)
-            # print("post_data: ", post_data)
-            # print("data: ", data)
-
             username, password, firstname, lastname = "", "", "", ""
             gender, bloodtype, dateofbirth = "", "", ""
             address, city, province, postalcode = "", "", "", ""
